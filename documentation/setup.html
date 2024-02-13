@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<meta charset="utf-8" />
+		<title>uCommerce Documentation - Setup</title>
+		
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700" />
+		<link rel="publisher" href="https://plus.google.com/+UcommerceNet" />
+		<link rel="author" href="https://plus.google.com/115340331147418233009/" />
+
+		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		
+		<link href="css/main.css?cdv=1" type="text/css" rel="stylesheet"/>
+		<link href="css/ucommerce.css" type="text/css" rel="stylesheet" />
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+		<link href="css/SyntaxHighlighter/shCore.css" type="text/css" rel="stylesheet" />
+		<link href="css/SyntaxHighlighter/shThemeVS.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+			<section class="banner">
+				<div class="text">
+					<h1>Reepay App Documentation</h1>
+						<p class="strap">Includes documentation on what the Reepay app contains and how to set it up and use it</p>
+				</div>
+				<img src="images/documentation.jpg" alt="" class="banner-image">
+			</section>
+			<div style="clear:both;"></div>	
+			<div class="main">
+				<div class="contentcontainer">
+					<section class="two-cols cf">
+						<nav class="secondary">
+							<h2>Documentation</h2>
+							<div class="aside">
+									<div class="aside-box">
+										<div class="holder">
+											<div class="frame">
+												<ul class="accordion">
+													<li><a href="index.html">Reepay App description</a></li>
+<li><a href="what-is-installed.html">What's Installed</a></li>
+<li><a href="setup.html">Setup</a></li>
+<li><a href="order-properties.html">Order properties</a></li>
+
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+						</nav>
+						<section class="main-col">
+							<h1 id="how-to-setup-the-reepay-app">How to setup the Reepay App</h1>
+<p>After the app is installed into Ucommerce you need to create a payment method by using the Reepay service. </p>
+<p>This follows the standard way of setting up a payment method within Ucommerce.</p>
+<div class="figure">
+<img src="images/reepay-setup-ucommerce.png" alt="image" />
+</div>
+<p><strong>ReepayPrivateKey</strong> is required for the payment method to function.</p>
+<p>You can find the ReepayPrivateKey in Reepay's system.
+Go to https://admin.reepay.com/ and login.
+Navigate to Developers -&gt; Api credentials in the left panel</p>
+<div class="figure">
+<img src="images/reepay-key.png" alt="image" />
+</div>
+<p><strong>Accept_url</strong> (required): The URL for the user to be redirected to, once the payment is completed.</p>
+<p><strong>Accept_url_change_cc</strong> (optional): The URL for the user to be redirected to after changing his credit card information.</p>
+<p><strong>Error_url</strong> (required): The URL for the user to be redirected to, if the payment fails.</p>
+<p><strong>Cancel_url</strong> (required): The URL for the user to be redirected to after clicking Cancel link on the Reepay payment window (usually it is a Checkout page).</p>
+<p><strong>Cancel_url_my_account</strong> (optional): The URL for the user to be redirected to after clicking Cancel link on the Reepay payment window when the payment is only for subscription (usually it is a MyAccount page from where a member can buy subscription).</p>
+<p><strong>Button_text_for_subscription</strong> (optional): The text that will be displayed on the submit button of reepay payment window when subscription is going to be bought. Must be not longer than 32 characters including spaces. If no value is provided, the Reepay default value (&quot;Gem&quot; for Danish sites) will be displayed.</p>
+<p><strong>Test</strong> (required): Must be true on test sites and false on production</p>
+<h1 id="how-to-automatically-capture-refund-and-cancel-payments">How to automatically capture, refund and cancel payments</h1>
+<p>Ucommerce can automatically capture, refund and cancel payments. If <strong>ShouldSubscriptionBeCreated</strong> and <strong>SubscriptionAmount</strong> order properties were set before the payment was authorised, please don't delete or change them as they must be used during capture, refund and cancel payments (see <strong>Order properties</strong> section for more information regarding order properties).</p>
+
+						</section>
+					</section>
+				</div>
+			</div>		
+		</div>
+		
+		<script type="text/javascript" src="scripts/jquery-1.7.2.min.js?cdv=1"></script>
+		<script type="text/javascript" src="scripts/UCommerce.js"></script>
+		<script type="text/javascript" src="scripts/SyntaxHighlighter/shCore.js"></script>
+		<script type="text/javascript" src="scripts/SyntaxHighlighter/shAutoloader.js"></script>
+		<script type="text/javascript">
+			SyntaxHighlighter.autoloader(
+				'js jscript javascript	scripts/SyntaxHighlighter/shBrushJScript.js',
+				'csharp					scripts/SyntaxHighlighter/shBrushCSharp.js',
+				'xml xslt html			scripts/SyntaxHighlighter/shBrushXml.js',
+				'sql					scripts/SyntaxHighlighter/shBrushSql',
+				'css					scripts/SyntaxHighlighter/shBrushCss.js',
+				'json					scripts/SyntaxHighlighter/shBrushJson.js'
+			);
+			
+			SyntaxHighlighter.all();
+			
+			$(function() {
+				$('table').addClass('variables-matrix table table-bordered table-striped');
+			});
+		</script>
+	</body>
+</html>
