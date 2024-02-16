@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{016DC939-E023-44C6-BB53-CED29D5E5531}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kruso.Reepay.Extensions</RootNamespace>
+    <AssemblyName>Kruso.Reepay.Extensions</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Ucommerce, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.Admin, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.Admin.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.Api, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.Infrastructure, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.Installer, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.Installer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.NHibernate, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.Pipelines, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.Presentation, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.Search, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.SqlMultiReaderConnector, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.SqlMultiReaderConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.SystemHttp, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.SystemHttp.dll</HintPath>
+    </Reference>
+    <Reference Include="Ucommerce.SystemWeb, Version=9.7.0.23075, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\uCommerce.Core.9.7.0.23075\lib\net45\Ucommerce.SystemWeb.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\InvoiceStateEnum.cs" />
+    <Compile Include="Enums\TransactionErrorEnum.cs" />
+    <Compile Include="Enums\ChangeSubscriptionTimingEnum.cs" />
+    <Compile Include="Enums\RefundStateEnum.cs" />
+    <Compile Include="Enums\SubscriptionDiscountStateEnum.cs" />
+    <Compile Include="Enums\SubscriptionStateEnum.cs" />
+    <Compile Include="Enums\SubscriptionSignupMethodEnum.cs" />
+    <Compile Include="Enums\ChargeStateEnum.cs" />
+    <Compile Include="Enums\WebhookSubscriptionEventEnum.cs" />
+    <Compile Include="Enums\WebhookStateEnum.cs" />
+    <Compile Include="Models\AccountInfo.cs" />
+    <Compile Include="Models\AddCardPaymentMethodRequest.cs" />
+    <Compile Include="Models\CustomerObject.cs" />
+    <Compile Include="Models\InvoiceObject.cs" />
+    <Compile Include="Models\CreateChargeRequest.cs" />
+    <Compile Include="Models\CreateOrderLine.cs" />
+    <Compile Include="Models\CreateCreditNoteLine.cs" />
+    <Compile Include="Models\ErrorResponse.cs" />
+    <Compile Include="Models\ReepayException.cs" />
+    <Compile Include="Models\SettleChargeRequest.cs" />
+    <Compile Include="Models\ManualTransfer.cs" />
+    <Compile Include="Models\CustomerAddress.cs" />
+    <Compile Include="Models\AddressBase.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\CancelSubscriptionRequest.cs" />
+    <Compile Include="Models\CreateRefundRequest.cs" />
+    <Compile Include="Models\RefundObject.cs" />
+    <Compile Include="Models\CouponRedemption.cs" />
+    <Compile Include="Models\RedeemCouponCodeRequest.cs" />
+    <Compile Include="Models\Coupon.cs" />
+    <Compile Include="Models\SubscriptionChange.cs" />
+    <Compile Include="Models\SubscriptionDiscount.cs" />
+    <Compile Include="Models\SetPaymentMethodRequest.cs" />
+    <Compile Include="Models\ChargeObject.cs" />
+    <Compile Include="Models\CreateSessionResponse.cs" />
+    <Compile Include="Models\CreateSubscriptionDiscount.cs" />
+    <Compile Include="Models\ChangeSubscriptionRequest.cs" />
+    <Compile Include="Models\CardObject.cs" />
+    <Compile Include="Models\SubscriptionObject.cs" />
+    <Compile Include="Models\SubscriptionBase.cs" />
+    <Compile Include="Models\CreateSubscriptionRequest.cs" />
+    <Compile Include="Models\RecurringSessionProperties.cs" />
+    <Compile Include="Models\SessionData.cs" />
+    <Compile Include="Models\SessionProperties.cs" />
+    <Compile Include="Models\CreateCustomer.cs" />
+    <Compile Include="Models\Phone.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\ChargeSessionProperties.cs" />
+    <Compile Include="Models\RiskIndicator.cs" />
+    <Compile Include="Models\ScaAddress.cs" />
+    <Compile Include="Models\ScaData.cs" />
+    <Compile Include="Models\WebhookContent.cs" />
+    <Compile Include="Models\WebhookObject.cs" />
+    <Compile Include="Pipelines\Initialize\ReepayInitializationPipelineTask.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Interfaces\IReepaySubscriptionRepository.cs" />
+    <Compile Include="Services\ReepayPropertyNames.cs" />
+    <Compile Include="Services\Interfaces\IReepayGateway.cs" />
+    <Compile Include="Services\Interfaces\IReepayPropertyNames.cs" />
+    <Compile Include="Services\Interfaces\IReepayRepository.cs" />
+    <Compile Include="Services\Interfaces\IReepayLogger.cs" />
+    <Compile Include="Services\ReepayGateway.cs" />
+    <Compile Include="Services\ReepayLogger.cs" />
+    <Compile Include="Services\ReepayPaymentMethodService.cs" />
+    <Compile Include="Services\ReepaySubscriptionRepository.cs" />
+    <Compile Include="Services\ReepayRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

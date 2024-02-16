@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<meta charset="utf-8" />
+		<title>uCommerce Documentation - Order properties</title>
+		
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700" />
+		<link rel="publisher" href="https://plus.google.com/+UcommerceNet" />
+		<link rel="author" href="https://plus.google.com/115340331147418233009/" />
+
+		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		
+		<link href="css/main.css?cdv=1" type="text/css" rel="stylesheet"/>
+		<link href="css/ucommerce.css" type="text/css" rel="stylesheet" />
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+		<link href="css/SyntaxHighlighter/shCore.css" type="text/css" rel="stylesheet" />
+		<link href="css/SyntaxHighlighter/shThemeVS.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+			<section class="banner">
+				<div class="text">
+					<h1>Reepay App Documentation</h1>
+						<p class="strap">Includes documentation on what the Reepay app contains and how to set it up and use it</p>
+				</div>
+				<img src="images/documentation.jpg" alt="" class="banner-image">
+			</section>
+			<div style="clear:both;"></div>	
+			<div class="main">
+				<div class="contentcontainer">
+					<section class="two-cols cf">
+						<nav class="secondary">
+							<h2>Documentation</h2>
+							<div class="aside">
+									<div class="aside-box">
+										<div class="holder">
+											<div class="frame">
+												<ul class="accordion">
+													<li><a href="index.html">Reepay App description</a></li>
+<li><a href="what-is-installed.html">What's Installed</a></li>
+<li><a href="setup.html">Setup</a></li>
+<li><a href="order-properties.html">Order properties</a></li>
+
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+						</nav>
+						<section class="main-col">
+							<h1 id="order-properties">Order properties</h1>
+<p>Different order properties can be used for sending/retrieving the specific data to/from the Reepay App.</p>
+<p>Order properties for sending data to Reepay App should be set before redirecting the customer to Reepay payment window.</p>
+<pre class="brush: xml">
+    
+    Kruso.Reepay.Extensions.Services.Interfaces.IReepayPropertyNames reepayPropertyNames = ObjectFactory.Instance.Resolve&lt;Kruso.Reepay.Extensions.Services.Interfaces.IReepayPropertyNames>();
+    
+    ITransactionLibrary transactionLibrary = ObjectFactory.Instance.Resolve&lt;Ucommerce.Api.ITransactionLibrary>();
+    
+    var trueStrValue = true.ToString(); 
+    transactionLibrary.SetOrderProperty(reepayPropertyNames.IsSubscriptionPayment, trueStrValue);
+    
+    </pre>
+<p><strong>IsCardChange</strong> - must be set to true if only card change should be performed without buying products or subscription</p>
+<p><strong>CurrentSubscriptionHandle</strong> - should be set if IsCardChange is set to true and card should be changed for this customer's reepay subscription with the same handle as this order property value</p>
+<p><strong>IsSubscriptionPayment</strong> - must be set to true if only subscription (with no other products) should be bought</p>
+<p><strong>ShouldSubscriptionBeCreated</strong> - must be set to true if subscription should be bought together with other products</p>
+<p><strong>SubscriptionAmount</strong> - the total amount for subscription with discounts taken into account; must be set if ShouldSubscriptionBeCreated is set to true</p>
+<p><strong>CardOnFile</strong> - if a returning customer with saved CC is going to buy products or subscription, his Reepay Card Id (ca_XXXX, can be found under Payment Methods -&gt; Card Details in Reepay account) can be set as CardOnFile order property, so the customer will see his card details already entered and masked on Reepay payment window</p>
+<p><strong>Customer</strong> - a unique handle for creating the customer in Reepay; it is recommended to always set this property value so it will be the same everytime for the same customer from your system, otherwise a new unique handle will be generated everytime by Reepay</p>
+<p><strong>SubscriptionPlan</strong> - the reepay subscription plan, mandatory for creating a subscription</p>
+<p><strong>DiscountName</strong> - the reepay discount name to be used for creating a subscription</p>
+<p><strong>SubscriptionDiscountAmount</strong> - if set together with DiscountName, the amount of reepay discount with DiscountName order property value will be overwritten by this value</p>
+<p><strong>CouponCode</strong> - the reepay coupon code to be used for creating a subscription</p>
+<p><strong>ShouldSubscriptionDiscountsRemainActive</strong> - subscription discount or coupon will be deleted from reepay subscription immediately after their first use if this property value is not set to true</p>
+<p><strong>OrderText</strong> - if set, will be displayed on Reepay payment window, but only in the case when property values IsSubscriptionPayment, ShouldSubscriptionBeCreated and IsCardChange are not true</p>
+<p><strong>SubscriptionHandle</strong> - this property will be set by Reepay App after successful subscription creation and can be retrieved in checkout pipeline tasks</p>
+<p><strong>IsSubscriptionSettled</strong> - this property will be set by Reepay App to &quot;true&quot; after successful subscription creation and can be retrieved in checkout pipeline tasks</p>
+<p>Order properties that were set by Reepay App (<strong>SubscriptionHandle</strong> and <strong>IsSubscriptionSettled</strong>) can be retrieved in pipeline tasks of the pipeline set in Ucommerce for Reepay payment method (usually it is a Checkout pipeline).</p>
+<pre class="brush: xml">
+    
+    public class SomeCustomCheckoutPipelineTask : IPipelineTask&lt;PurchaseOrder>
+    {
+    	private readonly Kruso.Reepay.Extensions.Services.Interfaces.IReepayPropertyNames _reepayPropertyNames;
+    	
+    	public SomeCustomCheckoutPipelineTask()
+    	{
+    		_reepayPropertyNames = ObjectFactory.Instance.Resolve&lt;Kruso.Reepay.Extensions.Services.Interfaces.IReepayPropertyNames>();
+    	}
+    
+    	public PipelineExecutionResult Execute(Ucommerce.EntitiesV2.PurchaseOrder order)
+    	{
+    		...
+    		var isSubscriptionSettled = order[_reepayPropertyNames.IsSubscriptionSettled];
+    		...
+    	}
+    }
+    
+    </pre>
+
+						</section>
+					</section>
+				</div>
+			</div>		
+		</div>
+		
+		<script type="text/javascript" src="scripts/jquery-1.7.2.min.js?cdv=1"></script>
+		<script type="text/javascript" src="scripts/UCommerce.js"></script>
+		<script type="text/javascript" src="scripts/SyntaxHighlighter/shCore.js"></script>
+		<script type="text/javascript" src="scripts/SyntaxHighlighter/shAutoloader.js"></script>
+		<script type="text/javascript">
+			SyntaxHighlighter.autoloader(
+				'js jscript javascript	scripts/SyntaxHighlighter/shBrushJScript.js',
+				'csharp					scripts/SyntaxHighlighter/shBrushCSharp.js',
+				'xml xslt html			scripts/SyntaxHighlighter/shBrushXml.js',
+				'sql					scripts/SyntaxHighlighter/shBrushSql',
+				'css					scripts/SyntaxHighlighter/shBrushCss.js',
+				'json					scripts/SyntaxHighlighter/shBrushJson.js'
+			);
+			
+			SyntaxHighlighter.all();
+			
+			$(function() {
+				$('table').addClass('variables-matrix table table-bordered table-striped');
+			});
+		</script>
+	</body>
+</html>
